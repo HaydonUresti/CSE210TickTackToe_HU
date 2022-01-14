@@ -1,7 +1,4 @@
 
-
-
-
 def board(spaces): 
     """ prints the game board and includes the elements of the list containing each space's contents
     Paramenters: 
@@ -72,7 +69,6 @@ def main():
 
         if turn % 2 == 0:
             player = 'O'
-        
         else: 
             player = "X"
 
@@ -86,6 +82,8 @@ def main():
 
 
         turn += 1
+        if turn == 10:
+            print("DRAW, GAME OVER...")
 
 
 
@@ -96,6 +94,4 @@ if __name__ == "__main__":
 
     # Add a computer player, probably just rng
     
-    #a way to determin winner may be through going through all possible combinations of winning positions, but there is definetely a better way.
-
     # handle non valid input
