@@ -12,7 +12,7 @@ def board(spaces):
 
 def make_choice(spaces, player):
     """A function that takes user input and adds it to the board by appending the list containing each space's contents
-    Parameters:
+    Parameters
         spaces: takes a list that holds the value of the current space
         player: the current value to be placed on the board (X/O)
         """
@@ -22,7 +22,45 @@ def make_choice(spaces, player):
         if spaces[i] == choice:
             spaces[i] = player
     
+def test_horizontal(spaces):
+    """A function that checks for a winner on the x axis
+    Parameters
+        spaces: takes a list that holds the value of the current space
+        """
+    if spaces[0] == spaces[1] == spaces[2]:
+        return True
+    elif spaces[3] == spaces[4] == spaces[5]:
+        return True
+    elif spaces[6] == spaces[7] == spaces[8]:
+        return True
+    else:
+        return False
 
+def test_vertical(spaces):
+    """A function that checks for a winner on the y axis
+    Parameters
+        spaces: takes a list that holds the value of the current space
+        """
+    if spaces[0] == spaces[3] == spaces[6]:
+        return True
+    elif spaces[1] == spaces[4] == spaces[7]:
+        return True
+    elif spaces[2] == spaces[5] == spaces[8]:
+        return True
+    else:
+        return False
+
+def test_diagonal(spaces):
+    """A function that checks for a winner on the diagonals
+    Parameters
+        spaces: takes a list that holds the value of the current space
+        """
+    if spaces[0] == spaces[4] == spaces[8]:
+        return True
+    elif spaces[6] == spaces[4] == spaces[2]:
+        return True
+    else:
+        return False
 
 
 def main(): 
@@ -42,9 +80,22 @@ def main():
 
         make_choice(space_list, player)
 
+        if test_horizontal(space_list) or test_vertical(space_list) or test_diagonal(space_list):
+            print(f"\n{player} Wins!!")
+            break
+
+
         turn += 1
 
 
 
 if __name__ == "__main__":
     main()
+
+
+
+    # Add a computer player, probably just rng
+    
+    #a way to determin winner may be through going through all possible combinations of winning positions, but there is definetely a better way.
+
+    # handle non valid input
