@@ -26,6 +26,7 @@ def make_choice(spaces, player, bot = False):
                 print("\nThat is not an available space. Please enter an available space\n")
             else:
                 break
+    
     #searches for the user's or bot's chosen placement and inserts marker
     if bot == False:
         for i in range(len(spaces)):
@@ -100,6 +101,12 @@ def play_again():
             print("Please enter 'y' or 'no'")
 
 def bot(spaces):
+    """Returns a random number as the bot's move
+    Parameters
+        spaces: takes a list that holds the value of the current space
+    Returns
+        bot_choice: the random number to be used as the bot's choice
+        """
     while True:
         bot_choice = random.choice(spaces)
         if bot_choice.isnumeric() == False:
@@ -112,6 +119,7 @@ def main():
     space_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9" ]
     turn = 1
     
+    # Pre-game text
     print("\nWelcome to Tick-Tack-Toe!")
     
     answer = input("Please press ENTER to continue or type 'q' at any time to quit: ")
@@ -136,7 +144,7 @@ def main():
 
         board(space_list)
 
-        
+        #determines if current input is player or bot 
         if player == 'O' and use_bot == True:
             bot_choice = bot(space_list)
             make_choice(space_list, player, bot(space_list))
@@ -157,11 +165,6 @@ def main():
             print("DRAW, GAME OVER...")
             play_again()
             
-
+           
 if __name__ == "__main__":
     main()
-
-
-
-    # Add a computer player, probably just rng
-    
