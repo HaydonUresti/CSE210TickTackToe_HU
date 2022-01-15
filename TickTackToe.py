@@ -1,4 +1,3 @@
-
 def board(spaces): 
     """ prints the game board and includes the elements of the list containing each space's contents
     Paramenters: 
@@ -13,8 +12,14 @@ def make_choice(spaces, player):
         spaces: takes a list that holds the value of the current space
         player: the current value to be placed on the board (X/O)
         """
-    choice = input("Enter the number of the space you want to mark (1-9): ")
+    while True:
 
+        choice = input("Enter the number of the space you want to mark (1-9): ")
+        if choice not in spaces:
+            print("\nThat is not an available space. Please enter an available space\n")
+        else:
+            break
+#searches for the user's chosen placement and inserts marker
     for i in range(len(spaces)):
         if spaces[i] == choice:
             spaces[i] = player
@@ -67,6 +72,7 @@ def main():
     # Main game loop
     while True:
 
+        #gets current user
         if turn % 2 == 0:
             player = 'O'
         else: 
