@@ -71,21 +71,34 @@ def test_diagonal(spaces):
 def exit_message():
     """A function that gives the user the option to quit the game"""
     while True:
-        quit = input("Are you sure you want to quit? Please enter 'y' or 'n': ")
+        quit = input("\nAre you sure you want to quit? Please enter 'y' or 'n': ")
         if quit == 'y':
             exit()
         elif quit == 'n':
             break
         else:
             print("Invalid input. Please enter 'y' or 'n'.")
+
+def play_again():
+    while True:
+        play_again = input("\nWould you like to play again? (y/n): \n")
+        if play_again == 'y':
+            main()
+        elif play_again == 'n':
+            exit()
+        else:
+            print("Please enter 'y' or 'no'")
+    
 def main(): 
     space_list = ["1", "2", "3", "4", "5", "6", "7", "8", "9" ]
     turn = 1
     
-    print("Welcome to Tick-Tack-Toe!")
+    print("\nWelcome to Tick-Tack-Toe!")
+    
     answer = input("Please press enter to continue or type 'q' at any time to quit: ")
     if answer == 'q':
         exit_message()
+   
     # Main game loop
     while True:
 
@@ -102,7 +115,7 @@ def main():
         #checking for a winner
         if test_horizontal(space_list) or test_vertical(space_list) or test_diagonal(space_list):
             print(f"\n{player} Wins!!")
-            break
+            play_again()
 
 
         turn += 1
@@ -110,8 +123,8 @@ def main():
         #checks for a draw
         if turn == 10:
             print("DRAW, GAME OVER...")
-
-
+            play_again()
+            
 
 if __name__ == "__main__":
     main()
@@ -120,4 +133,3 @@ if __name__ == "__main__":
 
     # Add a computer player, probably just rng
     
-    # handle non valid input
